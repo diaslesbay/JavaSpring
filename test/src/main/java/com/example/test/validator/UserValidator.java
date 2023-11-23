@@ -30,11 +30,8 @@ public class UserValidator implements Validator {
 
         if (userRepository.findByUsername(signUpRequest.getUsername()).isPresent())
             errors.rejectValue("username", "", "User with that name already exists");
-         else if (userRepository.findByEmail(signUpRequest.getEmail()).isPresent())
-            errors.rejectValue("email", "", "User with that email already exists");
-         else if (userRepository.findByPhoneNumber(signUpRequest.getPhoneNumber()).isPresent())
-            errors.rejectValue("phoneNumber", "", "User with that phone number already exists");
-
+//         else if (userRepository.findByEmail(signUpRequest.getEmail()).isPresent())
+//            errors.rejectValue("email", "", "User with that email already exists");
     }
 
 }

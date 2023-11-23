@@ -13,9 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class TestApplication implements CommandLineRunner {
 	@Autowired
 	private UserRepository userRepository;
-
 	public static void main(String[] args) {
-		SpringApplication.run(TestApplication.class, args);
+		SpringApplication.	run(TestApplication.class, args);
 	}
 
 	@Override
@@ -26,10 +25,7 @@ public class TestApplication implements CommandLineRunner {
 			user.setUsername("admin");
 			user.setStatus(TypeOfUser.ADMIN);
 			user.setEmail("admin@gmail.com");
-			user.setLastname("admin");
 			user.setFirstname("admin");
-			user.setAddress(null);
-			user.setPhoneNumber("+7737-233-21-21");
 			user.setPassword(new BCryptPasswordEncoder().encode("admin"));
 			userRepository.save(user);
 		}

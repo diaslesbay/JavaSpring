@@ -13,14 +13,8 @@ import java.security.Principal;
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
-    private final UserDetailService userService;
-    @GetMapping("/hello")
-    public String seyHello() {
-        return "Hello user";
-    }
-    @PostMapping("/profile")
-    public String profile(Principal principal, @RequestBody SignInRequest signInRequest) {
-        if(!principal.getName().equals(signInRequest.getUsername())) return HttpStatus.UNAUTHORIZED.name();
-        return userService.userDetailsService().loadUserByUsername(principal.getName()).toString();
+    @GetMapping("/profile")
+    public String profile(){
+        return "Hello User";
     }
 }

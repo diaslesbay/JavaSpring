@@ -28,10 +28,7 @@ public class AuthenticationService implements AuthenticationRepository {
 
     public User signup(SignUpRequest signUpRequest){
         User user = new User();
-        user.setPhoneNumber(signUpRequest.getPhoneNumber());
         user.setFirstname(signUpRequest.getFirstname());
-        user.setLastname(signUpRequest.getLastname());
-        user.setAddress(signUpRequest.getAddress());
         user.setEmail(signUpRequest.getEmail());
         user.setStatus(TypeOfUser.REGISTERED_USER);
         user.setUsername(signUpRequest.getUsername());
@@ -43,7 +40,6 @@ public class AuthenticationService implements AuthenticationRepository {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInRequest.getUsername(), signInRequest.getPassword()));
         UserDetails user  = userRepository.findByUsername(signInRequest.getUsername()).orElseThrow(() -> new IllegalArgumentException("Invalid username or password!"));
         String jwt = jwtService.generateToken(user);
-        System.out.println("signIn");
         String refreshToken = jwtService.generateRefreshToken(new HashMap<>(), user);
 
         JwtAuthenticationResponse jwtAuthenticationResponse = new JwtAuthenticationResponse();
